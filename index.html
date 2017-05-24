@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>Correspondence between gene expression and co-methylation modules</title>
+
+	<!-- D3.js -->	
+    <script src="http://d3js.org/d3.v3.js"></script>
+	<script src="d3.stretched.chord.js"></script>
+	<script src="d3.layout.chord.sort.js"></script>
+	
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Open Sans & CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400,300' rel='stylesheet' type='text/css'>
+	  <style>
+		body {
+		  font-family: 'Open Sans', sans-serif;
+		  font-size: 12px;
+		  font-weight: 400;
+		  color: #525252;
+		  text-align: center;
+		}	
+		
+		line {
+		  stroke: #000;
+		  stroke-width: 1.px;
+		}
+
+		text {
+		  font-size: 8px;
+		}
+
+		path.chord {
+		  fill-opacity: .80;
+		}
+		
+		.title {
+			text-anchor: middle;
+			fill: #3B3B3B;
+			font-weight: 300;
+			font-size: 16px;
+		}
+		.titleLine {
+			stroke: #DCDCDC;
+			shape-rendering: crispEdges;
+		}
+		
+		.title-h3 {
+		    margin-top: 20px;
+		    margin-bottom: 10px;
+		    font-size: 24px;
+		    font-weight: 500;
+			line-height: 1.1;
+			color: #3B3B3B;
+		}
+		
+		@media (min-width: 500px) {
+		  .explanation {
+			width: 50%; 
+			margin: 0 auto;
+		  }
+		}
+	  </style>
+  </head>
+  <body>
+ 
+	<div class="title-h3">Gnes overlapping between gene expression and gene co-methylation modules</div>
+
+    <div id="chart"></div>
+	
+	<div style="width: 100%;">
+		<div class="explanation">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+	</div>
+	
+    <script src="script.js"></script>
+	
+  </body>
+</html>
