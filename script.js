@@ -19,7 +19,7 @@ var wrapper = svg.append("g").attr("class", "chordWrapper")
 var outerRadius = Math.min(width, height) / 2  - (mobileScreen ? 80 : 100),
 	innerRadius = outerRadius * 0.95,
 	opacityDefault = 0.7, //default opacity of chords
-	opacityLow = 0.02; //hover opacity of those chords not hovered over
+	opacityLow = 0; //hover opacity of those chords not hovered over
 	
 //How many pixels should the two halves be pulled apart
 var pullOutSize = (mobileScreen? 20 : 50)
