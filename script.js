@@ -107,6 +107,9 @@ linearGradient.append("stop")
 
 var Names = ["M1","M2","M3","M4","M5","M6","M7","M8","M9","M10","M11","M12","M13","M14","M15","M16","M17","M18","M19","","E1","E2","E3","E4","E5","E6","E7","E8","E9","E10","E11","E12","E13","E14",""];
 
+var Caste = ["#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","#e5db00","","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500","#21e500",""];
+
+
 var genes = 5445, //Total number of genes
 	emptyPerc = 0.1, //What % of the circle should become empty
 	emptyStroke = Math.round(genes*emptyPerc); 
@@ -187,13 +190,24 @@ var g = wrapper.selectAll("g.group")
 
 g.append("path")
 	.style("stroke", function(d,i) { return (Names[i] === "" ? "none" : "#00A1DE"); })
-	.style("fill", function(d,i) { return (Names[i] === "" ? "none" : "#00A1DE"); })
+	.style("fill", function(d,i) { return (Names[i] === "" ? "none" : Caste[i]); })
 	.style("pointer-events", function(d,i) { return (Names[i] === "" ? "none" : "auto"); })
 	.attr("d", arc)
 	.attr("transform", function(d, i) { //Pull the two slices apart
 				d.pullOutSize = pullOutSize * ( d.startAngle + 0.001 > Math.PI ? -1 : 1);
 				return "translate(" + d.pullOutSize + ',' + 0 + ")";
 	});
+
+g.append("path")
+	.style("stroke", function(d,i) { return (Names[i] === "" ? "none" : "#00A1DE"); })
+	.style("fill", function(d,i) { return (Names[i] === "" ? "none" : "#00A1DE"); })
+	.style("pointer-events", function(d,i) { return (Names[i] === "" ? "none" : "auto"); })
+	.attr("d", arc)
+	.attr("transform", function(d, i) { //Pull the two slices apart
+				d.pullOutSize =  pullOutSize * ( d.startAngle + 0.001 > Math.PI ? -1 : 1);
+				return "scale(1.06) translate(" + d.pullOutSize*.96 + ',' + 0 + ")"
+				});
+
 
 
 ////////////////////////////////////////////////////////////
@@ -211,7 +225,7 @@ g.append("text")
 		var c = arc.centroid(d);
 		return "translate(" + (c[0] + d.pullOutSize) + "," + c[1] + ")"
 		+ "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-		+ "translate(" + 20 + ",0)"
+		+ "translate(" + 25 + ",0)"
 		+ (d.angle > Math.PI ? "rotate(180)" : "")
 	})
   .text(function(d,i) { return Names[i]; });
@@ -225,8 +239,8 @@ wrapper.selectAll("path.chord")
 	.enter().append("path")
 	.attr("class", "chord")
 	.style("stroke", "none")
-	.style("fill", "url(#animatedGradient)") //An SVG Gradient to give the impression of a flow from left to right
-	.style("opacity", function(d) { return (Names[d.source.index] === "" ? 0 : opacityDefault); }) //Make the dummy strokes have a zero opacity (invisible)
+	.style("fill", function(d,i) { return ((Names[d.target.index] === "E6") || (Names[d.target.index] === "E9") ? "#4286f4" : "url(#animatedGradient)");}) //An SVG Gradient to give the impression of a flow from left to right, and highlight conserved modules
+	.style("opacity", function(d) { return (Names[d.source.index] === "" ? 0 : opacityDefault); }) //Make the dummy strokes have a zero opacity (invisible)	
 	.style("pointer-events", function(d,i) { return (Names[d.source.index] === "" ? "none" : "auto"); }) //Remove pointer events from dummy strokes
 	.attr("d", path)
 	.on("mouseover", fadeOnChord)
@@ -238,7 +252,7 @@ wrapper.selectAll("path.chord")
 
 //Arcs
 g.append("title")	
-	.text(function(d, i) {return Math.round(d.value) + " people in " + Names[i];});
+	.text(function(d, i) {return Math.round(d.value) + " genes in " + Names[i];});
 		
 ////////////////////////////////////////////////////////////
 ////////////////// Extra Functions /////////////////////////
