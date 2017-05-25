@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-	<title>Correspondence between gene expression and co-methylation modules</title>
+	<title>Gene co-expression and co-methylation modules</title>
 
 	<!-- D3.js -->	
     <script src="https://d3js.org/d3.v3.js"></script>
@@ -63,21 +63,36 @@
 			margin: 0 auto;
 		  }
 		}
+		.filled-circle {
+  		padding: 2px 11px;
+  		border-radius: 100%;
+}    
 	  </style>
   </head>
   <body>
  
-	<div class="title-h3">Overlap between gene expression and gene co-methylation modules</div>
+	<div class="title-h3">Expression and methylation are associated with caste and age</div>
 
     <div id="chart"></div>
 	
 	<div style="width: 100%;">
 		<div class="explanation">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		Many of the modules constructed by weighted gene co-expresson or co-methylation analsyis were correlated with either caste, or age (inner and outer bands, respectively). Significantly positive correlations are highlighted in red <span class="filled-circle" style="background-color: #ff3030" ></span>, and negative in blue <span class="filled-circle" style="background-color: #1e90ff" ></span>. Although conservation of modules between co-expression and co-methylation data sets was generally weak, two expression modules (E6 and E9) were conserved in the co-methylation data, highligted in orange <span class="filled-circle" style="background-color: #f38e23; opacity: 0.7" ></span>.
 		</div>
 	</div>
 	
     <script src="script.js"></script>
+
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-45186360-13', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 	
   </body>
 </html>

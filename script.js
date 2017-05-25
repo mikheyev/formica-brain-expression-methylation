@@ -109,7 +109,7 @@ var Names = ["M1","M2","M3","M4","M5","M6","M7","M8","M9","M10","M11","M12","M13
 
 var Caste = ["#d3d3d3","#1e90ff","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#ff3030","#d3d3d3","#d3d3d3","#d3d3d3","#ff3030","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#ff3030","","#1e90ff","#1e90ff","#1e90ff","#d3d3d3","#1e90ff","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#1e90ff","#d3d3d3","#d3d3d3","#ff3030","#ff3030",""];
 
-var Stage = ["#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#ff3030","#d3d3d3","#ff3030","#ff3030","#ff3030","#d3d3d3",""];
+var Stage = ["#1e90ff","#d3d3d3","#ff3030","#ff3030","#ff3030","#d3d3d3","#ff3030","#ff3030","#ff3030","#d3d3d3","#ff3030","#ff3030","#ff3030","#d3d3d3","#d3d3d3","#d3d3d3","#ff3030","#ff3030","#ff3030","","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#ff3030","#d3d3d3","#ff3030","#ff3030","#ff3030","#d3d3d3",""];
 
 var genes = 5445, //Total number of genes
 	emptyPerc = 0.1, //What % of the circle should become empty
@@ -190,7 +190,7 @@ var g = wrapper.selectAll("g.group")
 	.on("mouseout", fade(opacityDefault));
 
 g.append("path")
-	.style("stroke", function(d,i) { return (Names[i] === "" ? "none" : "#00A1DE"); })
+	.style("stroke", function(d,i) { return (Names[i] === "" ? "none" : "#808080"); })
 	.style("fill", function(d,i) { return (Names[i] === "" ? "none" : Caste[i]); })
 	.style("pointer-events", function(d,i) { return (Names[i] === "" ? "none" : "auto"); })
 	.attr("d", arc)
@@ -200,7 +200,7 @@ g.append("path")
 	});
 
 g.append("path")
-	.style("stroke", function(d,i) { return (Names[i] === "" ? "none" : "#00A1DE"); })
+	.style("stroke", function(d,i) { return (Names[i] === "" ? "none" : "#808080"); })
 	.style("fill", function(d,i) { return (Names[i] === "" ? "none" : Stage[i]); })
 	.style("pointer-events", function(d,i) { return (Names[i] === "" ? "none" : "auto"); })
 	.attr("d", arc)
