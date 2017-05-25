@@ -231,6 +231,26 @@ g.append("text")
 	})
   .text(function(d,i) { return Names[i]; });
 
+
+g.append("text")
+	.attr("transform", "translate(0, -" + (outerRadius - 10)  + ")")
+	.style("font-size","12px")
+	.style("fill","black")
+	.style("stroke","none")
+	.style("font-weight","100")
+	.attr("text-anchor", "middle")
+  .text("caste");
+
+g.append("text")
+	.attr("transform", "translate(0, -" + (outerRadius + 10)  + ")")
+	.style("font-size","12px")
+	.style("fill","black")
+	.style("stroke","none")
+	.style("font-weight","100")
+	.attr("text-anchor", "middle")
+  .text("age");
+
+
 ////////////////////////////////////////////////////////////
 //////////////////// Draw inner chords /////////////////////
 ////////////////////////////////////////////////////////////
