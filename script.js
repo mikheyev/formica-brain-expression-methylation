@@ -259,7 +259,7 @@ wrapper.selectAll("path.chord")
 	.enter().append("path")
 	.attr("class", "chord")
 	.style("stroke", "none")
-	.style("fill", function(d,i) { return ((Names[d.target.index] === "E6") || (Names[d.target.index] === "E9") || (Names[d.target.index] === "E7") || (Names[d.target.index] === "E1") || (Names[d.target.index] === "E10") || (Names[d.source.index] === "M6") ? "#ffc125" : "url(#animatedGradient)");}) //An SVG Gradient to give the impression of a flow from left to right, and highlight conserved modules
+	.style("fill", function(d,i) { return ((Names[d.target.index] === "E6") || (Names[d.target.index] === "E9") || (Names[d.target.index] === "E7") || (Names[d.target.index] === "E1") || (Names[d.target.index] === "E10") || (Names[d.source.index] === "M16") ? "#ffc125" : "url(#animatedGradient)");}) //An SVG Gradient to give the impression of a flow from left to right, and highlight conserved modules
 	.style("opacity", function(d) { return (Names[d.source.index] === "" ? 0 : opacityDefault); }) //Make the dummy strokes have a zero opacity (invisible)	
 	.style("pointer-events", function(d,i) { return (Names[d.source.index] === "" ? "none" : "auto"); }) //Remove pointer events from dummy strokes
 	.attr("d", path)
