@@ -2,25 +2,25 @@
 //////////////////////// Set-up ////////////////////////////
 ////////////////////////////////////////////////////////////
 
-var screenWidth = $(window).innerWidth(), 
+var screenWidth = $(window).innerWidth(),
 	mobileScreen = (screenWidth > 500 ? false : true);
 
 var margin = {left: 50, top: 10, right: 50, bottom: 10},
 	width = Math.min(screenWidth, 800) - margin.left - margin.right,
 	height = (mobileScreen ? 300 : Math.min(screenWidth, 800)*5/6) - margin.top - margin.bottom;
-			
+
 var svg = d3.select("#chart").append("svg")
 			.attr("width", (width + margin.left + margin.right))
 			.attr("height", (height + margin.top + margin.bottom));
-			
+
 var wrapper = svg.append("g").attr("class", "chordWrapper")
 			.attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");;
-			
+
 var outerRadius = Math.min(width, height) / 2  - (mobileScreen ? 80 : 100),
 	innerRadius = outerRadius * 0.95,
 	opacityDefault = 0.7, //default opacity of chords
 	opacityLow = 0; //hover opacity of those chords not hovered over
-	
+
 //How many pixels should the two halves be pulled apart
 var pullOutSize = (mobileScreen? 20 : 50)
 
@@ -29,7 +29,7 @@ var pullOutSize = (mobileScreen? 20 : 50)
 //////////////////////////////////////////////////////
 
 var titleWrapper = svg.append("g").attr("class", "chordTitleWrapper"),
-	titleOffset = mobileScreen ? 15 : 40, 
+	titleOffset = mobileScreen ? 15 : 40,
 	titleSeparate = mobileScreen ? 30 : 0;
 
 //Title	top left
@@ -100,20 +100,22 @@ linearGradient.append("stop")
 linearGradient.append("stop")
 	.attr("offset","95%")
 	.attr("stop-color","#E8E8E8");
-	
+
 ////////////////////////////////////////////////////////////
 ////////////////////////// Data ////////////////////////////
 ////////////////////////////////////////////////////////////
 
 var Names = ["M1","M2","M3","M4","M5","M6","M7","M8","M9","M10","M11","M12","M13","M14","M15","M16","M17","M18","M19","M20","","E1","E2","E3","E4","E5","E6","E7","E8","E9","E10","E11","E12","E13","E14",""];
 
-var Caste = ["#d3d3d3", "#ff3030", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "", "#1e90ff", "#1e90ff", "#1e90ff", "#d3d3d3", "#1e90ff", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#1e90ff", "#d3d3d3", "#d3d3d3", "#ff3030", "#ff3030", ""];
+var Caste = ["#d3d3d3", "#ff3030", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "", "#d3d3d3", "#1e90ff", "#1e90ff", "#d3d3d3", "#1e90ff", "#d3d3d3", "#ff3030", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#ff3030", "#ff3030", "#d3d3d3", ""];
 
-var Stage = ["#d3d3d3","#d3d3d3","#1e90ff","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#1e90ff","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#d3d3d3","#1e90ff","#1e90ff","#1e90ff","#1e90ff","#d3d3d3","#d3d3d3","#d3d3d3","","#ff3030","#ff3030","#ff3030","#ff3030","#ff3030","#ff3030","#ff3030","#ff3030","#1e90ff","#d3d3d3","#1e90ff","#1e90ff","#1e90ff","#d3d3d3",""];
+var Stage = ["#d3d3d3", "#d3d3d3", "#1e90ff", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#1e90ff", "#1e90ff", "#d3d3d3", "#d3d3d3", "#1e90ff", "#1e90ff", "#d3d3d3", "#1e90ff", "#1e90ff", "#1e90ff", "#1e90ff", "#1e90ff", "#1e90ff", "#d3d3d3", "", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#ff3030", "#ff3030", "#ff3030", "#ff3030", "#ff3030", "#d3d3d3", "#d3d3d3", "#1e90ff", "#1e90ff", "#1e90ff", "#1e90ff", "#d3d3d3", ""];
+
+var Interaction = ["#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#a61faf", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#a61faf", "#d3d3d3", "#d3d3d3", "#a61faf", "#d3d3d3", "", "#d3d3d3", "#d3d3d3", "#a61faf", "#d3d3d3", "#d3d3d3", "#a61faf", "#a61faf", "#d3d3d3", "#a61faf", "#d3d3d3", "#d3d3d3", "#d3d3d3", "#a61faf", "#d3d3d3", ""];
 
 var genes = 4365, //Total number of genes
 	emptyPerc = 0.1, //What % of the circle should become empty
-	emptyStroke = Math.round(genes*emptyPerc); 
+	emptyStroke = Math.round(genes*emptyPerc);
 var matrix = [
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,6,1,1,2,1,0,16,0,0,1,4,0,0],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,4,7,1,1,41,2,0,1,11,8,0],
@@ -166,7 +168,7 @@ var chord = customChordLayout() //d3.layout.chord()//Custom sort function of the
 	.padding(.02)
 	.sortChords(d3.descending) //which chord should be shown on top when chords cross. Now the biggest chord is at the bottom
 	.matrix(matrix);
-	
+
 var arc = d3.svg.arc()
 	.innerRadius(innerRadius)
 	.outerRadius(outerRadius)
@@ -192,7 +194,7 @@ var g = wrapper.selectAll("g.group")
 
 g.append("path")
 	.style("stroke", function(d,i) { return (Names[i] === "" ? "none" : "#808080"); })
-	.style("fill", function(d,i) { return (Names[i] === "" ? "none" : Caste[i]); })
+	.style("fill", function(d,i) { return (Names[i] === "" ? "none" : Interaction[i]); })
 	.style("pointer-events", function(d,i) { return (Names[i] === "" ? "none" : "auto"); })
 	.attr("d", arc)
 	.attr("transform", function(d, i) { //Pull the two slices apart
@@ -210,6 +212,16 @@ g.append("path")
 				return "scale(1.06) translate(" + d.pullOutSize*.96 + ',' + 0 + ")"
 				});
 
+g.append("path")
+	.style("stroke", function(d,i) { return (Names[i] === "" ? "none" : "#808080"); })
+	.style("fill", function(d,i) { return (Names[i] === "" ? "none" : Caste[i]); })
+	.style("pointer-events", function(d,i) { return (Names[i] === "" ? "none" : "auto"); })
+	.attr("d", arc)
+	.attr("transform", function(d, i) { //Pull the two slices apart
+				d.pullOutSize =  pullOutSize * ( d.startAngle + 0.001 > Math.PI ? -1 : 1);
+				return "scale(1.125) translate(" + d.pullOutSize*.90 + ',' + 0 + ")"
+				});
+
 
 ////////////////////////////////////////////////////////////
 ////////////////////// Append Names ////////////////////////
@@ -222,18 +234,18 @@ g.append("text")
 	.attr("dy", ".35em")
 	.attr("class", "titles")
 	.attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
-	.attr("transform", function(d,i) { 
+	.attr("transform", function(d,i) {
 		var c = arc.centroid(d);
 		return "translate(" + (c[0] + d.pullOutSize) + "," + c[1] + ")"
 		+ "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-		+ "translate(" + 25 + ",0)"
+		+ "translate(" + 40 + ",0)"
 		+ (d.angle > Math.PI ? "rotate(180)" : "")
 	})
   .text(function(d,i) { return Names[i]; });
 
 
 g.append("text")
-	.attr("transform", "translate(0, -" + (outerRadius - 10)  + ")")
+	.attr("transform", "translate(0, -" + (outerRadius + 25)  + ")")
 	.style("font-size","12px")
 	.style("fill","black")
 	.style("stroke","none")
@@ -242,39 +254,47 @@ g.append("text")
   .text("caste");
 
 g.append("text")
-	.attr("transform", "translate(0, -" + (outerRadius + 10)  + ")")
+	.attr("transform", "translate(0, -" + (outerRadius + 7)  + ")")
 	.style("font-size","12px")
 	.style("fill","black")
 	.style("stroke","none")
 	.style("font-weight","100")
 	.attr("text-anchor", "middle")
-  .text("age");
+  .text("development stage");
 
+	g.append("text")
+		.attr("transform", "translate(0, -" + (outerRadius - 10)  + ")")
+		.style("font-size","12px")
+		.style("fill","black")
+		.style("stroke","none")
+		.style("font-weight","100")
+		.attr("text-anchor", "middle")
+	  .text("caste × developmental stage");
 
 ////////////////////////////////////////////////////////////
 //////////////////// Draw inner chords /////////////////////
 ////////////////////////////////////////////////////////////
- 
+
 wrapper.selectAll("path.chord")
 	.data(chord.chords)
 	.enter().append("path")
 	.attr("class", "chord")
 	.style("stroke", "none")
 	.style("fill", function(d,i) { return ((Names[d.target.index] === "E1") || (Names[d.target.index] === "E6") || (Names[d.target.index] === "E9") || (Names[d.target.index] === "E10") ? "#ffc125" : "url(#animatedGradient)");}) //An SVG Gradient to give the impression of a flow from left to right, and highlight conserved modules
-	.style("opacity", function(d) { return (Names[d.source.index] === "" ? 0 : opacityDefault); }) //Make the dummy strokes have a zero opacity (invisible)	
+	.style("opacity", function(d) { return (Names[d.source.index] === "" ? 0 : opacityDefault); }) //Make the dummy strokes have a zero opacity (invisible)
 	.style("pointer-events", function(d,i) { return (Names[d.source.index] === "" ? "none" : "auto"); }) //Remove pointer events from dummy strokes
 	.attr("d", path)
 	.on("mouseover", fadeOnChord)
-	.on("mouseout", fade(opacityDefault));	
+	.on("mouseout", fade(opacityDefault));
 
 ////////////////////////////////////////////////////////////
 ///////////////////////// Tooltip //////////////////////////
 ////////////////////////////////////////////////////////////
 
 //Arcs
-g.append("title")	
+g.append("title")
 	.text(function(d, i) {return Math.round(d.value) + " genes in " + Names[i];});
-		
+
 ////////////////////////////////////////////////////////////
 ////////////////// Extra Functions /////////////////////////
 ////////////////////////////////////////////////////////////

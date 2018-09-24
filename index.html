@@ -5,14 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 	<title>Gene co-expression and co-methylation modules</title>
 
-	<!-- D3.js -->	
+	<!-- D3.js -->
     <script src="https://d3js.org/d3.v3.js"></script>
 	<script src="d3.stretched.chord.js"></script>
 	<script src="d3.layout.chord.sort.js"></script>
-	
+
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	
+
 	<!-- Open Sans & CSS -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:700,400,300' rel='stylesheet' type='text/css'>
 	  <style>
@@ -22,8 +22,8 @@
 		  font-weight: 400;
 		  color: #525252;
 		  text-align: center;
-		}	
-		
+		}
+
 		line {
 		  stroke: #000;
 		  stroke-width: 1.px;
@@ -36,7 +36,7 @@
 		path.chord {
 		  fill-opacity: .80;
 		}
-		
+
 		.title {
 			text-anchor: middle;
 			fill: #3B3B3B;
@@ -47,7 +47,7 @@
 			stroke: #DCDCDC;
 			shape-rendering: crispEdges;
 		}
-		
+
 		.title-h3 {
 		    margin-top: 20px;
 		    margin-bottom: 10px;
@@ -56,31 +56,31 @@
 			line-height: 1.1;
 			color: #3B3B3B;
 		}
-		
+
 		@media (min-width: 500px) {
 		  .explanation {
-			width: 50%; 
+			width: 50%;
 			margin: 0 auto;
 		  }
 		}
 		.filled-circle {
   		padding: 2px 11px;
   		border-radius: 100%;
-}    
+}
 	  </style>
   </head>
   <body>
- 
+
 	<div class="title-h3">Expression and methylation are associated with caste and age</div>
 
     <div id="chart"></div>
-	
+
 	<div style="width: 100%;">
-		<div class="explanation">
-		Many of the modules gene co-expression and co-methylation modules were correlated with either caste (inner band), or age (outer bands). Significant correlations with the queen caste and old age are highlighted in red <span class="filled-circle" style="background-color: #ff3030" ></span>, while worker and young age correlations are highlighted in blue <span class="filled-circle" style="background-color: #1e90ff" ></span>. Although conservation of modules between co-expression and co-methylation datasets was generally weak, four expression modules (E1, E6, E9 and E10) were conserved in the co-methylation data. Their connections are highlighted in orange <span class="filled-circle" style="background-color: #f38e23; opacity: 0.7" ></span>.
+		<div class="explanation" align="left">
+		Many of the modules gene co-expression and co-methylation modules were correlated with either caste (outer band), or developmetal stage (middle band) or their interaction (inner band). Significant correlations with the queen caste and developmental maturity are highlighted in red <span class="filled-circle" style="background-color: #ff3030" ></span>, while worker and newly closed developmental stage correlations are highlighted in blue <span class="filled-circle" style="background-color: #1e90ff" ></span>. Significant caste by developmental stage interactions are highlighted in purple <span class="filled-circle" style="background-color: #a61faf" ></span>. <br><br> Although conservation of modules between co-expression and co-methylation datasets was generally weak, four expression modules (E1, E6, E9 and E10) were conserved in the co-methylation data (See Table S16). Their connections are highlighted in orange <span class="filled-circle" style="background-color: #f38e23; opacity: 0.7" ></span>.
 		</div>
 	</div>
-	
+
     <script src="script.js"></script>
 
     <script>
@@ -93,6 +93,6 @@
 	  ga('send', 'pageview');
 
 	</script>
-	
+
   </body>
 </html>
